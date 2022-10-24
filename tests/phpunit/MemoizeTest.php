@@ -16,7 +16,6 @@ class MemoizeTest extends TestCase
          * @throws Exception
          */
         $closure = function () {
-            sleep(1);
             return random_int(1, 4500);
         };
 

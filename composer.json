@@ -1,5 +1,6 @@
 {
     "name": "zeus/memoize",
+    "license": ["MIT"],
     "description": "php memoize library",
     "autoload": {
         "psr-4": {
