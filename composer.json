@@ -1,0 +1,28 @@
+{
+    "name": "zeus/memoize",
+    "description": "php memoize library",
+    "autoload": {
+        "psr-4": {
+            "Zeus\\Memoize\\": "src/"
+        },
+        "files": [
+            "src/once.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Dılo sürücü",
+            "email": "berxudar@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "friendsofphp/php-cs-fixer": "^3.12",
+        "phpbench/phpbench": "^1.2"
+    },
+    "scripts": {
+        "test": "php vendor/bin/phpunit",
+        "psr-fixer": "php vendor/bin/php-cs-fixer fix .",
+        "benchmark": "./vendor/bin/phpbench run tests/benchmark --report=default"
+    }
+}
