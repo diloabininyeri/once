@@ -6,7 +6,7 @@ It does not make different logic each time, it does it in one go and stores the 
 **for install with composer** 
 ```console
 
-composer require  zeus/once
+composer require  zeus/once:dev-main
 ```
 **for test**
 ```console
