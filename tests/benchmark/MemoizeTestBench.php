@@ -4,19 +4,32 @@ use function Zeus\Memoize\once;
 
 class MemoizeTestBench
 {
-    #[\PhpBench\Attributes\Iterations(2)]
     /**
-     * @return void
-     *
+     * @throws ReflectionException
      */
+    #[\PhpBench\Attributes\Iterations(2)]
     public function benchMemoize(): void
     {
-        $closure = function () {
+        once($this->getClosure());
+    }
+
+    /**
+     * @throws ReflectionException
+     */
+    #[\PhpBench\Attributes\Sleep(2),\PhpBench\Attributes\Iterations(2)]
+    public function benchMemoizeWithSleep(): void
+    {
+        once($this->getClosure());
+    }
+
+    /**
+     * @return Closure
+     */
+    public function getClosure(): Closure
+    {
+        return static function () {
             sleep(1);
             return true;
         };
-
-        $testOnce = new \Zeus\Memoize\TestOnce();
-        $testOnce->foo($closure);
     }
 }

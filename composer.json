@@ -23,6 +23,6 @@
     "scripts": {
         "test": "php vendor/bin/phpunit",
         "psr-fixer": "php vendor/bin/php-cs-fixer fix .",
-        "benchmark": "./vendor/bin/phpbench run tests/benchmark --report=default"
+        "benchmark": "php vendor/bin/phpbench run tests/benchmark --report=default"
     }
 }
