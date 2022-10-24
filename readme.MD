@@ -24,7 +24,7 @@ $closure=function (){
 }
 
 echo once($closure); // same value (it will sleep)
-echo once($closure); //same value, get from cache 
+echo once($closure); //same value, it tooks from cache 
 
 ```
 
