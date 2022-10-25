@@ -5,6 +5,7 @@ namespace Zeus\Memoize;
 use Closure;
 use ReflectionException;
 use ReflectionFunction;
+use Throwable;
 
 /**
  *
@@ -62,7 +63,11 @@ class ClosureHash implements HashInterface
      */
     private function objectToString(object $object): string
     {
-        return spl_object_hash($object);
+        try {
+            return serialize($object);
+        } catch (Throwable) {
+            return spl_object_hash($object);
+        }
     }
 
     /**

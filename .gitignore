@@ -6,3 +6,4 @@ node_modules
 .phpunit.result.cache
 test.php
 token
+.php-cs-fixer.cache
