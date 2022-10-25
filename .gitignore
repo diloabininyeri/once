@@ -5,3 +5,4 @@ deneme.php
 node_modules
 .phpunit.result.cache
 test.php
+token
