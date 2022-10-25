@@ -2,6 +2,8 @@
 
 namespace Zeus\Memoize;
 
+use Closure;
+
 /**
  *
  */
@@ -52,5 +54,17 @@ class Cache
     public function set(mixed $content): void
     {
         static::$caches[$this->hash] = $content;
+    }
+
+    /**
+     * @param Closure $closure
+     * @return mixed
+     */
+    public function remember(Closure $closure): mixed
+    {
+        if (!$this->exists()) {
+            $this->set($closure());
+        }
+        return $this->get();
     }
 }

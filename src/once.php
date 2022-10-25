@@ -10,10 +10,5 @@ use ReflectionException;
  */
 function once(Closure $closure): mixed
 {
-    $cache = new Cache(new ClosureHash($closure));
-
-    if (!$cache->exists()) {
-        $cache->set($closure());
-    }
-    return $cache->get();
+    return  (new Cache(new ClosureHash($closure)))->remember($closure);
 }
