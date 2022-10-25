@@ -3,9 +3,9 @@
 namespace Zeus\Memoize;
 
 use Closure;
+use Exception;
 use ReflectionException;
 use ReflectionFunction;
-use Throwable;
 
 /**
  *
@@ -65,7 +65,7 @@ class ClosureHash implements HashInterface
     {
         try {
             return serialize($object);
-        } catch (Throwable) {
+        } catch (Exception) {
             return spl_object_hash($object);
         }
     }
