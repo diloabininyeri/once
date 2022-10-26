@@ -96,6 +96,10 @@ class Random
 }
 
  $random = new Random();
+ //let's change of object instance of variable with @phpdoc @var
+ /**
+ * @var Random $once 
+ */
  $once = new OnceWrapper($random);
 
  $first = $once->getInteger(1, 100);
@@ -108,4 +112,4 @@ class Random
 
 ```
 
->do you notice something, getInteger() method Random object in method but it's like the method of OnceWrapper object, yes it works just like that
+>do you notice something, getInteger() method Random object in method, but it's like the method of OnceWrapper object, yes it works just like that
