@@ -78,7 +78,7 @@ $content1=once($closure);
 
 **once wrappers for objects**
 <br>
-OnceWrapper object offers memoize for object,
+OnceWrapper object offers memoize for object,this object is sensitive to change of parameters
 <br>
 usage
 
