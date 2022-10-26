@@ -52,24 +52,21 @@ use function Zeus\Memoize\once;
 <br>
 Via the **&** operator
 
-
-
-
 ```php
 
 
 use function Zeus\Memoize\once;
 
 
- $person = new  Linkedin();
- $person->setName('dılo sürücü');
+ $linkedin = new  Linkedin();
+ $linkedin->setName('dılo sürücü');
  
- $closure = function () use (&$person) {
+ $closure = function () use (&$linkedin) {
      return $http->getProfiles();
  };
  
 $content = once($closure);
-$person->setName('abdulkadir sürücü');
+$linkedin->setName('abdulkadir sürücü');
 $content1=once($closure);
  
  //$content===$content1 =>false
