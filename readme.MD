@@ -113,3 +113,20 @@ class Random
 ```
 
 >do you notice something, getInteger() method Random object in method, but it's like the method of OnceWrapper object, yes it works just like that
+
+
+
+**Custom cache Adapter**
+<br>
+you can use custom cache adapter for customizable cache like redis or memcache .Assuming you have a class called Redis Cache Adapter,you can use the "setCacheAdapter" method for this,...
+
+
+```php
+
+$random = new Random();
+$once = new OnceWrapper($random);
+$once->setCacheAdapter(new RedisCacheAdapter());
+
+$first = $once->getInteger(1, 100);
+$second = $once->getInteger(1, 100); 
+```

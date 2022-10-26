@@ -2,7 +2,7 @@
 
 namespace Zeus\Memoize;
 
-interface HashInterface
+interface Hash
 {
     public function getHash(): string;
 }

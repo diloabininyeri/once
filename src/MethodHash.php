@@ -8,7 +8,7 @@ use ReflectionException;
 /**
  *
  */
-class MethodHash implements HashInterface
+class MethodHash implements Hash
 {
     /**
      * @var object

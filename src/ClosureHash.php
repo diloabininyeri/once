@@ -10,7 +10,7 @@ use ReflectionFunction;
 /**
  *
  */
-class ClosureHash implements HashInterface
+class ClosureHash implements Hash
 {
     /**
      * @var ReflectionFunction

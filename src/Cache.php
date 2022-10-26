@@ -24,7 +24,7 @@ class Cache
     /**
      * @param ClosureHash $closureHash
      */
-    public function __construct(HashInterface $closureHash)
+    public function __construct(Hash $closureHash)
     {
         $this->hash = $closureHash->getHash();
     }
