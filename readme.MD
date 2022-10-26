@@ -103,6 +103,10 @@ class Random
 
  $first = $once->getInteger(1, 100);
  $second = $once->getInteger(1, 100);
+ $third = $once->getInteger(200, 300);
+ 
+ //$second===$third =>false
+ 
  $this->assertEquals($first, $second);
 
 ```
