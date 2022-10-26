@@ -12,7 +12,7 @@ composer require  zeus/once:dev-main
 ```console
 composer test
 ```
-**using** 
+**usage** 
 
 ```php
 
@@ -25,6 +25,54 @@ $closure=function (){
 
 echo once($closure); // same value (it will sleep)
 echo once($closure); //same value, it tooks from cache 
+
+```
+**parameter usage** 
+
+
+```php
+
+use function Zeus\Memoize\once;
+
+
+ $http = new  Http();
+ 
+ $closure = function () use ($http) {
+     return $http->get('https://www.foobar.com');
+ };
+ 
+ $content = once($closure);
+ $content1=once($closure);
+ 
+ //$content===$content1 =>true
+
+```
+
+**it sensitive to object change**
+<br>
+Via the **&** operator
+
+
+
+
+```php
+
+
+use function Zeus\Memoize\once;
+
+
+ $person = new  Linkedin();
+ $person->setName('dılo sürücü');
+ 
+ $closure = function () use (&$person) {
+     return $http->getProfiles();
+ };
+ 
+$content = once($closure);
+$person->setName('abdulkadir sürücü');
+$content1=once($closure);
+ 
+ //$content===$content1 =>false
 
 ```
 

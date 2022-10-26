@@ -84,4 +84,25 @@ class MemoizeTest extends TestCase
         $this->assertEquals($first, $third);
         $this->assertNotEquals($second, $third);
     }
+
+
+    /**
+     * @test
+     * @return void
+     * @throws ReflectionException@
+     */
+    public function withObject():void
+    {
+        $random = new  Random();
+
+        $closure = function () use ($random) {
+            return $random->getInteger(1,100);
+        };
+
+        $first = once($closure);
+        foreach (range(1,10) as $item) {
+            $this->assertEquals($first,once($closure));
+
+        }
+    }
 }
