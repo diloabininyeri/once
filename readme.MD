@@ -12,7 +12,7 @@ composer require  zeus/once:dev-main
 ```console
 composer test
 ```
-**usage** 
+**Basic usage** 
 
 ```php
 
@@ -27,7 +27,7 @@ echo once($closure); // same value (it will sleep)
 echo once($closure); //same value, it tooks from cache 
 
 ```
-**parameter usage** 
+**Parameter usage** 
 
 
 ```php
