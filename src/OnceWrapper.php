@@ -16,11 +16,9 @@ class OnceWrapper implements HashInterface
     private string $hash;
 
     /**
-     * @throws ReflectionException
      */
     public function __construct(readonly private object $object)
     {
-        $this->hash = $this->getObjectHash($this->object);
     }
 
     /**
@@ -58,12 +56,12 @@ class OnceWrapper implements HashInterface
     {
         $string = (string)null;
         $string .= $method;
-        foreach ($parameters as $argument) {
-            if (is_object($argument)) {
-                $string .= $this->getObjectHash($argument);
+        foreach ($parameters as $parameter) {
+            if (is_object($parameter)) {
+                $string .= $this->getObjectHash($parameter);
                 continue;
             }
-            $string .= serialize($argument);
+            $string .= serialize($parameter);
         }
         return $string;
     }
