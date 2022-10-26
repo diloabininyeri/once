@@ -22,17 +22,11 @@ class OnceWrapper implements HashInterface
     }
 
     /**
-     * @throws ReflectionException
+     * @return string
      */
-    private function getObjectHash(object $object): string
+    public function getHash(): string
     {
-        return once(static function () use ($object) {
-            try {
-                return serialize($object);
-            } catch (Exception) {
-                return spl_object_hash($object);
-            }
-        });
+        return $this->hash;
     }
 
 
@@ -52,6 +46,33 @@ class OnceWrapper implements HashInterface
     /**
      * @throws ReflectionException
      */
+    private function createHash(string $method, array $parameters): string
+    {
+        return md5(sprintf(
+            '%s.%s',
+            $this->getObjectHash($this->object),
+            $this->createMethodHash($method, $parameters)
+        ));
+    }
+
+    /**
+     * @throws ReflectionException
+     */
+    private function getObjectHash(object $object): string
+    {
+        return once(static function () use ($object) {
+            try {
+                return serialize($object);
+            } catch (Exception) {
+                return spl_object_hash($object);
+            }
+        });
+    }
+
+
+    /**
+     * @throws ReflectionException
+     */
     private function createMethodHash(string $method, array $parameters): string
     {
         $string = (string)null;
@@ -64,28 +85,5 @@ class OnceWrapper implements HashInterface
             $string .= serialize($parameter);
         }
         return $string;
-    }
-
-    /**
-     * @throws ReflectionException
-     */
-    private function createHash(string $method, array $parameters): string
-    {
-        $methodHash = $this->createMethodHash($method, $parameters);
-        $objectHash = $this->getObjectHash($this->object);
-        return md5(sprintf(
-            '%s.%s',
-            $objectHash,
-            $methodHash
-        ));
-    }
-
-
-    /**
-     * @return string
-     */
-    public function getHash(): string
-    {
-        return $this->hash;
     }
 }
