@@ -1,4 +1,4 @@
-### Php once(memoize) function 
+### Php memoize
 
 It does not make different logic each time, it does it in one go and stores the result in memory, so there is no extra operation and time loss when it is called repeatedly, it returns the previous result
 
