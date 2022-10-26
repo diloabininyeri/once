@@ -5,7 +5,7 @@ use PHPUnit\Framework\TestCase;
 
 use function Zeus\Memoize\once;
 
-class MemoizeTest extends TestCase
+class OnceFunctionTest extends TestCase
 {
     /**
      * @test
@@ -91,18 +91,17 @@ class MemoizeTest extends TestCase
      * @return void
      * @throws ReflectionException@
      */
-    public function withObject():void
+    public function withObject(): void
     {
         $random = new  Random();
 
         $closure = function () use ($random) {
-            return $random->getInteger(1,100);
+            return $random->getInteger(1, 100);
         };
 
         $first = once($closure);
-        foreach (range(1,10) as $item) {
-            $this->assertEquals($first,once($closure));
-
+        foreach (range(1, 10) as $item) {
+            $this->assertEquals($first, once($closure));
         }
     }
 }

@@ -76,3 +76,35 @@ $content1=once($closure);
 
 ```
 
+**once wrappers for objects**
+<br>
+OnceWrapper object offers memoize for object,
+<br>
+usage
+
+```php
+use Zeus\Memoize\OnceWrapper;
+
+
+class Random
+{
+
+    /**
+     * @throws Exception
+     */
+    public function getInteger(int $start, int $end):int
+    {
+        return random_int($start, $end);
+    }
+}
+
+ $random = new Random();
+ $once = new OnceWrapper($random);
+
+ $first = $once->getInteger(1, 100);
+ $second = $once->getInteger(1, 100);
+ $this->assertEquals($first, $second);
+
+```
+
+>do you notice something, getInteger() method Random object in method but it's like the method of OnceWrapper object, yes it works just like that
