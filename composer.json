@@ -7,7 +7,7 @@
             "Zeus\\Memoize\\": "src/"
         },
         "files": [
-            "src/once.php"
+            "src/once.php","src/once_wrapper.php"
         ]
     },
     "authors": [

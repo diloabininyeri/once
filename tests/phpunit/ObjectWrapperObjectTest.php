@@ -7,7 +7,7 @@ use Random;
 use ReflectionException;
 use Zeus\Memoize\OnceWrapper;
 
-class ObjectWrapperTest extends TestCase
+class ObjectWrapperObjectTest extends TestCase
 {
     /**
      * @test
