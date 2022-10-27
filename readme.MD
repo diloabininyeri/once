@@ -1,18 +1,22 @@
 ### Php memoize
 
-It does not make different logic each time, it does it in one go and stores the result in memory, so there is no extra operation and time loss when it is called repeatedly, it returns the previous result
+It does not make different logic each time, it does it in one go and stores the result in memory, so there is no extra
+operation and time loss when it is called repeatedly, it returns the previous result
 
+**for install with composer**
 
-**for install with composer** 
 ```console
 
 composer require  zeus/once:dev-main
 ```
+
 **for test**
+
 ```console
 composer test
 ```
-**Basic usage** 
+
+**Basic usage**
 
 ```php
 
@@ -27,8 +31,8 @@ echo once($closure); // same value (it will sleep)
 echo once($closure); //same value, it tooks from cache 
 
 ```
-**Parameter usage** 
 
+**Parameter usage**
 
 ```php
 
@@ -112,21 +116,66 @@ class Random
 
 ```
 
->do you notice something, getInteger() method Random object in method, but it's like the method of OnceWrapper object, yes it works just like that
+> do you notice something, getInteger() method Random object in method, but it's like the method of OnceWrapper object,
+> yes it works just like that
 
 
 
 **Custom cache Adapter**
 <br>
-you can use custom cache adapter for customizable cache like redis or memcache .Assuming you have a class called **RedisCacheAdapter**,you can use the "setCacheAdapter" method for this,...
-
+you can use custom cache adapter for customizable cache like redis or memcache .Assuming you have a class called **
+RedisCacheAdapter**,you can use the "setCacheAdapter" method for this,...
 
 ```php
 
+
+
+class Random
+{
+
+    /**
+     * @throws Exception
+     */
+    public function getInteger(int $start, int $end):int
+    {
+        return random_int($start, $end);
+    }
+}
+
 $random = new Random();
+ //let's change of object instance of variable with @phpdoc @var
+ /**
+ * @var Random $once 
+ */
 $once = new OnceWrapper($random);
 $once->setCacheAdapter(new RedisCacheAdapter());
 
 $first = $once->getInteger(1, 100);
 $second = $once->getInteger(1, 100); 
+```
+
+**once_wrapper global helper**
+<br>
+useful global function to memoize objects, also added generic class for phpstorm auto complete...
+
+```php
+
+use function Zeus\Memoize\once_wrapper;
+
+class Random
+{
+
+    /**
+     * @throws Exception
+     */
+    public function getInteger(int $start, int $end):int
+    {
+        return random_int($start, $end);
+    }
+}
+
+$first = once_wrapper(new Random())->getInteger(1, 100);
+$second = once_wrapper(new Random())->getInteger(1, 100);
+
+var_dump($first===$second); //true
 ```
