@@ -118,7 +118,7 @@ class Random
 
 **Custom cache Adapter**
 <br>
-you can use custom cache adapter for customizable cache like redis or memcache .Assuming you have a class called Redis Cache Adapter,you can use the "setCacheAdapter" method for this,...
+you can use custom cache adapter for customizable cache like redis or memcache .Assuming you have a class called **RedisCacheAdapter**,you can use the "setCacheAdapter" method for this,...
 
 
 ```php
