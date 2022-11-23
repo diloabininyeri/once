@@ -7,7 +7,7 @@ operation and time loss when it is called repeatedly, it returns the previous re
 
 ```console
 
-composer require  zeus/once:dev-main
+composer require  zeus/memoize
 ```
 
 **for test**
